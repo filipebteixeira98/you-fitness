@@ -1,14 +1,16 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
+import Animated, { FadeInDown } from 'react-native-reanimated'
 import { StatusBar } from 'expo-status-bar'
 import { LinearGradient } from 'expo-linear-gradient'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import Animated, { FadeInDown } from 'react-native-reanimated'
+import { useRouter } from 'expo-router'
 
 export default function Home() {
+  const router = useRouter()
+
   return (
     <View className="flex flex-1 justify-end">
       <StatusBar style="light" />
@@ -44,6 +46,7 @@ export default function Home() {
           <TouchableOpacity
             style={{ height: hp(7), width: wp(70) }}
             className="flex items-center justify-center mx-auto rounded-full border-[2px] border-neutral-200 bg-rose-500"
+            onPress={() => router.push('dashboard')}
           >
             <Text
               style={{ fontSize: hp(3) }}
