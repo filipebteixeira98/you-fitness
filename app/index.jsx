@@ -6,6 +6,7 @@ import {
 import { StatusBar } from 'expo-status-bar'
 import { LinearGradient } from 'expo-linear-gradient'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import Animated, { FadeInDown } from 'react-native-reanimated'
 
 export default function Home() {
   return (
@@ -22,7 +23,10 @@ export default function Home() {
         end={{ x: 0.5, y: 0.8 }}
         className="flex justify-end pb-12 space-y-8"
       >
-        <View className="flex items-center">
+        <Animated.View
+          entering={FadeInDown.delay(100).springify()}
+          className="flex items-center"
+        >
           <Text
             style={{ fontSize: hp(5) }}
             className="text-white font-bold tracking-wide"
@@ -35,8 +39,8 @@ export default function Home() {
           >
             For You
           </Text>
-        </View>
-        <View>
+        </Animated.View>
+        <Animated.View entering={FadeInDown.delay(200).springify()}>
           <TouchableOpacity
             style={{ height: hp(7), width: wp(70) }}
             className="flex items-center justify-center mx-auto rounded-full border-[2px] border-neutral-200 bg-rose-500"
@@ -48,7 +52,7 @@ export default function Home() {
               Get Started
             </Text>
           </TouchableOpacity>
-        </View>
+        </Animated.View>
       </LinearGradient>
     </View>
   )
